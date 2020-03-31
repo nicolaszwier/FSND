@@ -12,7 +12,7 @@ class QuizView extends Component {
         quizCategory: null,
         previousQuestions: [], 
         showAnswer: false,
-        categories: {},
+        categories: [],
         numCorrect: 0,
         currentQuestion: {},
         guess: '',
@@ -61,6 +61,7 @@ class QuizView extends Component {
       },
       crossDomain: true,
       success: (result) => {
+        
         this.setState({
           showAnswer: false,
           previousQuestions: previousQuestions,
@@ -71,7 +72,14 @@ class QuizView extends Component {
         return;
       },
       error: (error) => {
-        alert('Unable to load question. Please try your request again')
+        console.log('error', error);
+
+        if (error.status == 404) {
+          this.setState({
+            showAnswer: false,
+            forceEnd: true
+          })
+        }
         return;
       }
     })
@@ -105,14 +113,14 @@ class QuizView extends Component {
               <div className="choose-header">Choose Category</div>
               <div className="category-holder">
                   <div className="play-category" onClick={this.selectCategory}>ALL</div>
-                  {Object.keys(this.state.categories).map(id => {
+                  {this.state.categories.map(category => {
                   return (
                     <div
-                      key={id}
-                      value={id}
+                      key={category.id}
+                      value={category.id}
                       className="play-category"
-                      onClick={() => this.selectCategory({type:this.state.categories[id], id})}>
-                      {this.state.categories[id]}
+                      onClick={() => this.selectCategory({type:category.type, id: category.id})}>
+                      {category.type}
                     </div>
                   )
                 })}
