@@ -6,22 +6,61 @@
 .categories-list {
   flex-basis: 25%;
   flex-shrink: 2;
+  color: white;
 }
 
-.categories-list > form {
+.categories-list>form {
   width: 60%;
+}
+
+.categories-list>ul>li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px 20px;
+  border-radius: 4px;
+  background-color: rgb(49, 45, 133);
+  padding: 5px 25px 5px 15px;
+}
+
+.categories-list>ul>li:hover {
+  display: flex;
+  justify-content: flex-start;
+  border-left: 3px solid #E65392;
+  background-color: #5993E6;
+  padding: 5px 22px 5px 15px;
+  cursor: pointer;
+}
+
+.categories-list>ul>li>span {
+  margin-left: 10px;
 }
 
 .questions-list {
   flex-basis: 75%;
+  height: auto;
   text-align: center;
+  /* overflow-y: auto; */
+  color: white;
 }
 
 .Question-holder {
+  transition: all 0.15s;
   padding: 10px 20px;
-  border: 2px black solid;
+  border: none;
+  background-color: rgb(49, 45, 133);
   text-align: left;
-  margin: 7px;
+  margin: 20px;
+  border-radius: 16px;
+  /* box-shadow: 1px 1px 5px 0px #adadad; */
+  border: 1px solid rgba(255, 255, 255, 0.452);
+}
+
+.Question-holder:hover {
+  border: 1px solid rgba(235, 235, 235, 0);
+  transition: all 0.25s;
+  /* background-color: #bfbfbf00; */
+  box-shadow: 1px 1px 22px 0px #bfbfbf;
 }
 
 .Question-status {
@@ -34,8 +73,10 @@
 }
 
 .Question {
-  font-size: 21px;
+  font-size: 23px;
+  font-weight: 600;
   width: 100%;
+  color: white;
 }
 
 .answer-holder {
@@ -45,25 +86,39 @@
 }
 
 .show-answer {
-  width: 100px;
+  width: auto;
   margin-top: 5px;
   background-color: dodgerblue;
   color: white;
-  padding: 3px 5px;
+  padding: 10px 20px;
+  border-radius: 4px;
   margin-left: 0px !important;
+}
+
+.pagination-menu {
+  margin-bottom: 50px;
 }
 
 span.page-num {
   margin: 5px;
-  padding-bottom: 50px;
+  padding: 5px 10px;
+  margin-bottom: 50px;
   /* color: blue; */
+  border-radius: 4px;
   font-weight: bolder;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   font-size: 16px;
+background-color: white;
+color: #E65392;
 }
 
 span.page-num.active {
-  color: blue;
+  color: white;
+  background-color: #E65392;
+}
+
+span.page-num:hover {
+  cursor: pointer;
 }
 
 img.category {
@@ -72,4 +127,6 @@ img.category {
 
 img.delete {
   width: 20px;
+  cursor: pointer;
 }
+

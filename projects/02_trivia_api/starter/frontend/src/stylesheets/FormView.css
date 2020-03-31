@@ -1,7 +1,55 @@
-.form-view > label {
+input {
+   /* padding: 10px; */
+   height: 35px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+select {
+  /* padding: 10px; */
+  height: 35px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+.form-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-view>label {
   padding: 0px 0px 10px;
 }
 
 #add-form {
   text-align: center;
+  width: 80%;
+  margin: auto;
+  color: white;
+}
+
+.form-view>label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.form-view>label>input {
+  /* flex-grow: 1; */
+  /* margin-left: 10px; */
+  width: 100%;
+}
+
+.form-view>label>select {
+  /* flex-grow: 1; */
+  /* margin-left: 10px; */
+  width: 100%;
+}
+
+.form-view>label>span {
+  /* flex-grow: 1; */
+  width: 40px;
 }

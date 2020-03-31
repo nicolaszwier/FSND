@@ -1,5 +1,17 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open sans', sans-serif;
+  background-image: url(../assets/backgroud.svg);
 }
+
+
+/* colors */
+
+/**
+* #FEFEFB - white 
+* #A09AD7 - light blue
+* #E65392 - light pink
+* #5993E6 - blue 
+* #3B35BA - blue accent
+*/

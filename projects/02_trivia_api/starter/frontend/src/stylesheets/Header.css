@@ -1,0 +1,33 @@
+    
+.App-header {
+    position: sticky;
+    top: 0;
+    /* background-color: transparent; */
+    background-image: url('../assets/backgroud.svg');
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    padding: 20px;
+    padding-right: 40%;
+    padding-left: 5%;
+    border-bottom: 1px solid #5993E6;
+    /* box-shadow: 0px 1px 4px #2d2d2d; */
+  }
+  
+  .App-header:hover {
+    border-bottom: 1px solid transparent;
+    box-shadow: 0px 1px 4px #2d2d2d;
+  }
+  .App-header > h1 {
+    color: #E65392;
+  }
+  .App-header > h2 {
+    cursor: pointer;
+  }
+  .App-header > h2:hover {
+    color: #5993E6;
+    cursor: pointer;
+  }
+  
