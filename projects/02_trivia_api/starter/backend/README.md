@@ -66,7 +66,219 @@ One note before you delve into your tasks: for each endpoint you are expected to
 8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
 9. Create error handlers for all expected errors including 400, 404, 422 and 500. 
 
-REVIEW_COMMENT
+## API Reference
+
+### Error Handling
+Errors are returned as JSON objects in the following format:
+
+```
+{
+    "success": False, 
+    "error": 404,
+    "message": "Not found"
+}
+```
+
+The API will return these error types when requests fail:
+
+- 400: Bad request
+- 404: Not found
+- 422: Unprocessable
+
+## Endpoints
+
+## GET '/categories'
+- General:
+  - Returns a list of categories objects, success value, and total number of categories
+  - Sample: `http://127.0.0.1:5000/categories`
+  
+  
+  ```
+  {
+  "categories": [
+    {
+      "id": 1, 
+      "type": "Science"
+    }, 
+    {
+      "id": 2, 
+      "type": "Art"
+    }, 
+    {
+      "id": 3, 
+      "type": "Geography"
+    }, 
+    {
+      "id": 4, 
+      "type": "History"
+    }, 
+    {
+      "id": 5, 
+      "type": "Entertainment"
+    }, 
+    {
+      "id": 6, 
+      "type": "Sports"
+    }
+  ], 
+  "success": true, 
+  "total_categories": 6
+  }
+  ```
+
+## GET '/questions'
+
+- General:
+  - Returns a list of questions objects, list of categories objects, current category, success value, and total number of questions
+  - Results are paginated in groups of 10. Include a request argument to choose page number: `page=1`, starting from 1. And a request argument: `search-term` to filter questions by question name, if nothing has informed, all questions will be listed.
+  - Sample: `http://127.0.0.1:5000/questions?page={page}&search-term={term}`
+  
+  
+  ```
+  
+  {
+  "categories": [
+    {
+      "id": 1, 
+      "type": "Science"
+    }, 
+    {
+      "id": 2, 
+      "type": "Art"
+    }, 
+    {
+      "id": 3, 
+      "type": "Geography"
+    }, 
+    {
+      "id": 4, 
+      "type": "History"
+    }, 
+    {
+      "id": 5, 
+      "type": "Entertainment"
+    }, 
+    {
+      "id": 6, 
+      "type": "Sports"
+    }
+  ], 
+  "current_category": "null", 
+  "questions": [
+    {
+      "answer": "Apollo 13", 
+      "category": 5, 
+      "difficulty": 4, 
+      "id": 2, 
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    }, 
+    {
+      "answer": "Tom Cruise", 
+      "category": 5, 
+      "difficulty": 4, 
+      "id": 4, 
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    }, 
+    {
+      "answer": "Maya Angelou", 
+      "category": 4, 
+      "difficulty": 2, 
+      "id": 5, 
+      "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+    }, 
+    {
+      "answer": "Edward Scissorhands", 
+      "category": 5, 
+      "difficulty": 3, 
+      "id": 6, 
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    }, 
+    {
+      "answer": "Muhammad Ali", 
+      "category": 4, 
+      "difficulty": 1, 
+      "id": 9, 
+      "question": "What boxer's original name is Cassius Clay?"
+    }, 
+    {
+      "answer": "Brazil", 
+      "category": 6, 
+      "difficulty": 3, 
+      "id": 10, 
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    }, 
+    {
+      "answer": "Uruguay", 
+      "category": 6, 
+      "difficulty": 4, 
+      "id": 11, 
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    }, 
+    {
+      "answer": "George Washington Carver", 
+      "category": 4, 
+      "difficulty": 2, 
+      "id": 12, 
+      "question": "Who invented Peanut Butter?"
+    }, 
+    {
+      "answer": "Lake Victoria", 
+      "category": 3, 
+      "difficulty": 2, 
+      "id": 13, 
+      "question": "What is the largest lake in Africa?"
+    }, 
+    {
+      "answer": "The Palace of Versailles", 
+      "category": 3, 
+      "difficulty": 3, 
+      "id": 14, 
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    }
+  ], 
+  "success": true, 
+  "total_questions": 21
+  }
+
+  ```
+
+## DELETE '/questions/{question_id}'
+
+- General:
+  - Deletes the question of the given ID if it exists. Returns the id of the deleted question, success value, and total questions.
+  - Sample: `http://127.0.0.1:5000/questions/{question_id}`
+  
+  ```
+   {
+    "deleted": 26, 
+    "success": true, 
+    "total_questions": 20
+   }
+  ```
+
+# POST '/questions'
+- General:
+  - Creates a new question, if success, returns success value and new question id.
+  - Sample: `http://127.0.0.1:5000/questions
+  
+  - Body: 
+  ```
+  {
+    "question":"Question name",
+    "answer":"question answer",
+    "difficulty":1,
+    "category":1
+   }
+  ```
+  - Response: 
+  ```
+  {
+    "created": 32, 
+    "success": true
+  }
+  ```
+
+
 ```
 This README is missing documentation of your endpoints. Below is an example for your endpoint to get all categories. Please use it as a reference for creating your documentation and resubmit your code. 
 
