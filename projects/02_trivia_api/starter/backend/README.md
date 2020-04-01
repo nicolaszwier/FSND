@@ -256,10 +256,10 @@ The API will return these error types when requests fail:
    }
   ```
 
-# POST '/questions'
+## POST '/questions'
 - General:
   - Creates a new question, if success, returns success value and new question id.
-  - Sample: `http://127.0.0.1:5000/questions
+  - Sample: `http://127.0.0.1:5000/questions`
   
   - Body: 
   ```
@@ -278,28 +278,111 @@ The API will return these error types when requests fail:
   }
   ```
 
+## GET '/categories/{category_id}/questions'
 
-```
-This README is missing documentation of your endpoints. Below is an example for your endpoint to get all categories. Please use it as a reference for creating your documentation and resubmit your code. 
+- General:
+  - Fetches a list of categories and a list of questions filtered by category id
+  - Request Arguments: None
+  - Returns: A object that contains a list of categories and a list of questions filtered by category id, current category, success value, and total number of questions
+  - Sample: `http://127.0.0.1:5000/categories/2/questions`
+  
+  ```
+   {
+  "categories": [
+    {
+      "id": 1, 
+      "type": "Science"
+    }, 
+    {
+      "id": 2, 
+      "type": "Art"
+    }, 
+    {
+      "id": 3, 
+      "type": "Geography"
+    }, 
+    {
+      "id": 4, 
+      "type": "History"
+    }, 
+    {
+      "id": 5, 
+      "type": "Entertainment"
+    }, 
+    {
+      "id": 6, 
+      "type": "Sports"
+    }
+  ], 
+  "current_category": "null", 
+  "questions": [
+    {
+      "answer": "Escher", 
+      "category": 2, 
+      "difficulty": 1, 
+      "id": 16, 
+      "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
+    }, 
+    {
+      "answer": "Mona Lisa", 
+      "category": 2, 
+      "difficulty": 3, 
+      "id": 17, 
+      "question": "La Giaconda is better known as what?"
+    }, 
+    {
+      "answer": "One", 
+      "category": 2, 
+      "difficulty": 4, 
+      "id": 18, 
+      "question": "How many paintings did Van Gogh sell in his lifetime?"
+    }, 
+    {
+      "answer": "Jackson Pollock", 
+      "category": 2, 
+      "difficulty": 2, 
+      "id": 19, 
+      "question": "Which American artist was a pioneer of Abstract Expressionism, and a leading exponent of action painting?"
+    }
+  ], 
+  "success": true, 
+  "total_questions": 21
+  }
 
-Endpoints
-GET '/categories'
-GET ...
-POST ...
-DELETE ...
+  ```
 
-GET '/categories'
-- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
-- Request Arguments: None
-- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
-{'1' : "Science",
-'2' : "Art",
-'3' : "Geography",
-'4' : "History",
-'5' : "Entertainment",
-'6' : "Sports"}
+## POST '/quizzes'
+- General:
+  - Send to server an object that contains an object with the quiz category and a list of previous questions.
+  - The server will fetch the question to be answered in the front end. The previous questions are used to not fetch the same question twice. If don't find any question, 404 is the response. 
+  - Request Arguments: None
+  - Returns: A object with the current question of the quiz, and the success value.
+  - Sample: `http://127.0.0.1:5000/questions`
+  
+  - Body: 
+  ```
+  {
+    "previous_questions":[1,2],
+    "quiz_category": {
+        "type":"Art",
+        "id":2
+        }
+  }
 
-```
+  ```
+  - Response: 
+  ```
+  {
+  "question": {
+    "answer": "Escher", 
+    "category": 2, 
+    "difficulty": 1, 
+    "id": 16, 
+    "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
+  }, 
+  "success": true
+  }
+  ```
 
 
 ## Testing
